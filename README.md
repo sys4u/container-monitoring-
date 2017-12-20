@@ -9,6 +9,12 @@ docker stack deploy -c docker-stack.yml monitor
 -c is shorten key for --compose-file. 
 
 
+next, you make influx DB to save data that collect from cadvisor.
+```
+docker exec `docker ps | grep -i influx | awk '{print $1}'` influx -execute 'CREATE DATABASE cadvisor'
+```
+
+
 if you check docker-stack.yml file, you can know grafana's port is 3000 because I set that 3000. 
 
 you can change grafana's port number. 
